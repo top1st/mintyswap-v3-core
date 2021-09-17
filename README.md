@@ -63,3 +63,11 @@ The primary license for Uniswap V3 Core is the Business Source License 1.1 (`BUS
 - Several files in `contracts/libraries/` are licensed under `GPL-2.0-or-later` (as indicated in their SPDX headers), see [`contracts/libraries/LICENSE_GPL`](contracts/libraries/LICENSE_GPL)
 - `contracts/libraries/FullMath.sol` is licensed under `MIT` (as indicated in its SPDX header), see [`contracts/libraries/LICENSE_MIT`](contracts/libraries/LICENSE_MIT)
 - All files in `contracts/test` remain unlicensed.
+
+
+### Deploy V3 ETHEREUM NETWORK
+
+```
+deployer: 0xc76a437283b89b07f0215ac81989b3ba9b31e679
+Factory: 0x42eb44df87B9170363dE9B09bd39BF9b5F05f231
+```
