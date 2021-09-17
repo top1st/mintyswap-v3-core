@@ -3,10 +3,10 @@ pragma solidity =0.7.6;
 
 import '../interfaces/IERC20Minimal.sol';
 
-import '../interfaces/callback/IUniswapV3SwapCallback.sol';
-import '../interfaces/IUniswapV3Pool.sol';
+import '../interfaces/callback/IMintyswapV3SwapCallback.sol';
+import '../interfaces/IMintyswapV3Pool.sol';
 
-contract UniswapV3PoolSwapTest is IUniswapV3SwapCallback {
+contract MintyswapV3PoolSwapTest is IMintyswapV3SwapCallback {
     int256 private _amount0Delta;
     int256 private _amount1Delta;
 
@@ -23,7 +23,7 @@ contract UniswapV3PoolSwapTest is IUniswapV3SwapCallback {
             uint160 nextSqrtRatio
         )
     {
-        (amount0Delta, amount1Delta) = IUniswapV3Pool(pool).swap(
+        (amount0Delta, amount1Delta) = IMintyswapV3Pool(pool).swap(
             address(0),
             zeroForOne,
             amountSpecified,
@@ -31,10 +31,10 @@ contract UniswapV3PoolSwapTest is IUniswapV3SwapCallback {
             abi.encode(msg.sender)
         );
 
-        (nextSqrtRatio, , , , , , ) = IUniswapV3Pool(pool).slot0();
+        (nextSqrtRatio, , , , , , ) = IMintyswapV3Pool(pool).slot0();
     }
 
-    function uniswapV3SwapCallback(
+    function MintyswapV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,
         bytes calldata data
@@ -42,9 +42,9 @@ contract UniswapV3PoolSwapTest is IUniswapV3SwapCallback {
         address sender = abi.decode(data, (address));
 
         if (amount0Delta > 0) {
-            IERC20Minimal(IUniswapV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, uint256(amount0Delta));
+            IERC20Minimal(IMintyswapV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, uint256(amount0Delta));
         } else if (amount1Delta > 0) {
-            IERC20Minimal(IUniswapV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, uint256(amount1Delta));
+            IERC20Minimal(IMintyswapV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, uint256(amount1Delta));
         }
     }
 }

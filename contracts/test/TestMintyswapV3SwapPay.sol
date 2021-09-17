@@ -3,10 +3,10 @@ pragma solidity =0.7.6;
 
 import '../interfaces/IERC20Minimal.sol';
 
-import '../interfaces/callback/IUniswapV3SwapCallback.sol';
-import '../interfaces/IUniswapV3Pool.sol';
+import '../interfaces/callback/IMintyswapV3SwapCallback.sol';
+import '../interfaces/IMintyswapV3Pool.sol';
 
-contract TestUniswapV3SwapPay is IUniswapV3SwapCallback {
+contract TestMintyswapV3SwapPay is IMintyswapV3SwapCallback {
     function swap(
         address pool,
         address recipient,
@@ -16,7 +16,7 @@ contract TestUniswapV3SwapPay is IUniswapV3SwapCallback {
         uint256 pay0,
         uint256 pay1
     ) external {
-        IUniswapV3Pool(pool).swap(
+        IMintyswapV3Pool(pool).swap(
             recipient,
             zeroForOne,
             amountSpecified,
@@ -25,7 +25,7 @@ contract TestUniswapV3SwapPay is IUniswapV3SwapCallback {
         );
     }
 
-    function uniswapV3SwapCallback(
+    function MintyswapV3SwapCallback(
         int256,
         int256,
         bytes calldata data
@@ -33,9 +33,9 @@ contract TestUniswapV3SwapPay is IUniswapV3SwapCallback {
         (address sender, uint256 pay0, uint256 pay1) = abi.decode(data, (address, uint256, uint256));
 
         if (pay0 > 0) {
-            IERC20Minimal(IUniswapV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, uint256(pay0));
+            IERC20Minimal(IMintyswapV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, uint256(pay0));
         } else if (pay1 > 0) {
-            IERC20Minimal(IUniswapV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, uint256(pay1));
+            IERC20Minimal(IMintyswapV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, uint256(pay1));
         }
     }
 }
