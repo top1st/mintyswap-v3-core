@@ -8,8 +8,8 @@ import './NoDelegateCall.sol';
 
 import './MintyswapV3Pool.sol';
 
-/// @title Canonical Uniswap V3 factory
-/// @notice Deploys Uniswap V3 pools and manages ownership and control over pool protocol fees
+/// @title Canonical Mintyswap V3 factory
+/// @notice Deploys Mintyswap V3 pools and manages ownership and control over pool protocol fees
 contract MintyswapV3Factory is IMintyswapV3Factory, MintyswapV3PoolDeployer, NoDelegateCall {
     /// @inheritdoc IMintyswapV3Factory
     address public override owner;
