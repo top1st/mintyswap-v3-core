@@ -68,6 +68,7 @@ The primary license for Uniswap V3 Core is the Business Source License 1.1 (`BUS
 ### Deploy V3 ETHEREUM NETWORK
 
 ```
-deployer: 0xc76a437283b89b07f0215ac81989b3ba9b31e679
-Factory: 0x42eb44df87B9170363dE9B09bd39BF9b5F05f231
+deployer: 0x768C44eB96862Acc5b35c0dFC526Cb34aA7c063F
+Factory: 0x21bf88d5753f971ADD459b33504cb1B62c2D2719
+initCodeHash: 0x43217921bbb04fabc8c743fa538c897486d663f86b31754003da0ae10967a0bc
 ```

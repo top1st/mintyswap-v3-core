@@ -6,8 +6,9 @@ require('dotenv').config()
 async function main() {
     // const [deployer] = await ethers.getSigners();
     const deployer = new ethers.Wallet(process.env.PRIVATE_KEY, ethers.provider)
+    console.log(deployer.address)
 
-    const Factory = await hre.ethers.getContractFactory("UniswapV3Factory", deployer);
+    const Factory = await hre.ethers.getContractFactory("MintyswapV3Factory", deployer);
     const factory = await Factory.deploy()
     await factory.deployed()
 
