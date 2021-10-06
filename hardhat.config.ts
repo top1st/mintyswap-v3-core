@@ -9,7 +9,7 @@ export default {
     hardhat: {
       allowUnlimitedContractSize: false,
       forking: {
-        url: `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`,
+        url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
       }
     },
     mainnet: {
